@@ -1,0 +1,22 @@
+{
+    "name": "sep/templating-engine",
+    "description": "A simple starter and easy to use templating engine",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Sep\\TemplatingEngine\\": "src/",
+            "Sep\\Testing\\": "modules/"
+        }
+    },
+    "authors": [
+        {
+            "name": "SepdeGraaff",
+            "email": "sep.de.graaff@maxserv.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=8.2"
+    }
+}
