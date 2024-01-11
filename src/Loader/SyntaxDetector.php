@@ -17,7 +17,7 @@ class SyntaxDetector
 
         $bytes = $detectFile;
 
-        $byteIndex = 1;
+        $byteIndex = 0;
 
         foreach ($bytes as $byte => $currentByte) {
             if ($byte[$currentByte] === 60 && $byte === 60)
