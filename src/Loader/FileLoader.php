@@ -2,6 +2,8 @@
 
 namespace Sep\TemplatingEngine\Loader;
 
+use Sep\TemplatingEngine\Builders\RenderFileBuilder;
+use Sep\TemplatingEngine\Detectors\SyntaxDetectorBrackets;
 use Sep\TemplatingEngine\Interfaces\FileLoaderInterface;
 
 class FileLoader implements FileLoaderInterface
@@ -17,16 +19,14 @@ class FileLoader implements FileLoaderInterface
     {
         $renderFile = $this->filePath . $file;
 
-        $detector = new SyntaxDetector($renderFile);
-        $detector->detector();
-
         if (!file_exists($renderFile) || !is_readable($renderFile)) {
             throw new \RuntimeException("File not found or not readable: $renderFile");
         }
 
         try {
-            include $renderFile;
-        } catch (\Exception $exception) {
+            $builder = new RenderFileBuilder($renderFile);
+            echo $builder->build($arguments);
+        } catch (\Throwable $exception) {
             echo "Loading error: " . $exception->getMessage();
         }
     }
